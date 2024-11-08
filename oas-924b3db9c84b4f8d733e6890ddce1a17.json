@@ -1,0 +1,107 @@
+{
+  "oas": {
+    "components": {
+      "securitySchemes": {
+        "jwtAuth": {
+          "bearerFormat": "JWT",
+          "scheme": "bearer",
+          "type": "http"
+        }
+      }
+    },
+    "info": {
+      "title": "demo",
+      "version": "1.0.0"
+    },
+    "openapi": "3.0.3",
+    "paths": {
+      "/xml": {
+        "get": {
+          "operationId": "xmlget",
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "jwtAuth": []
+      }
+    ],
+    "servers": [
+      {
+        "url": "http://localhost:8080/demo/"
+      }
+    ],
+    "x-tyk-api-gateway": {
+      "info": {
+        "dbId": "672da5a4ddbfb80001fa5d92",
+        "id": "924b3db9c84b4f8d733e6890ddce1a17",
+        "name": "demo",
+        "orgId": "672b37edddbfb80001fa5d90",
+        "state": {
+          "active": true
+        }
+      },
+      "middleware": {
+        "operations": {
+          "xmlget": {
+            "transformResponseBody": {
+              "body": "e3sgLiB8IGpzb25NYXJzaGFsIH19",
+              "enabled": true,
+              "format": "xml"
+            },
+            "transformResponseHeaders": {
+              "add": [
+                {
+                  "name": "content-type",
+                  "value": "application/json"
+                }
+              ],
+              "enabled": true,
+              "remove": [
+                "content-type"
+              ]
+            }
+          }
+        }
+      },
+      "server": {
+        "authentication": {
+          "enabled": true,
+          "securitySchemes": {
+            "jwtAuth": {
+              "defaultPolicies": [
+                "672da640ddbfb80001fa5d97"
+              ],
+              "enabled": true,
+              "header": {
+                "enabled": true,
+                "name": "Authorization"
+              },
+              "identityBaseField": "sub",
+              "policyFieldName": "pol",
+              "signingMethod": "rsa",
+              "source": "aHR0cHM6Ly9sZW11ci0xNC5jbG91ZC1pYW0uY29tL2F1dGgvcmVhbG1zL3R5a2RlbW8vcHJvdG9jb2wvb3BlbmlkLWNvbm5lY3QvY2VydHM="
+            }
+          }
+        },
+        "listenPath": {
+          "strip": true,
+          "value": "/demo/"
+        }
+      },
+      "upstream": {
+        "url": "http://httpbin.org/"
+      }
+    }
+  },
+  "hook_references": [],
+  "is_site": false,
+  "sort_by": 0,
+  "user_group_owners": [],
+  "user_owners": []
+}

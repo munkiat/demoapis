@@ -1,0 +1,23 @@
+{
+  "type": "apidef",
+  "files": [
+    {
+      "file": "oas-924b3db9c84b4f8d733e6890ddce1a17.json",
+      "oas": {}
+    }
+  ],
+  "policies": [
+    {
+      "file": "policy-672da624ddbfb80001fa5d96.json"
+    },
+    {
+      "file": "policy-672da640ddbfb80001fa5d97.json"
+    },
+    {
+      "file": "policy-672dab4cddbfb80001fa5d98.json"
+    },
+    {
+      "file": "policy-672da611ddbfb80001fa5d95.json"
+    }
+  ]
+}

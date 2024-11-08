@@ -1,0 +1,25 @@
+name: Deploy APIs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    env:
+      dashboard_url: ${{ secrets.DASHBOARD_URL }}
+      dash_key: ${{ secrets.DASH_KEY }}
+    runs-on: ubuntu-latest
+    name: Deploy Tyk APIs
+    steps:
+     - run: echo "starting sync"
+     - run: echo "${{ runner.os }} operating system"
+     - run: echo "$dashboard_url"
+     - name: Check Out
+       uses: actions/checkout@v4
+     - run: ls -a
+     - run: |
+         curl -s https://packagecloud.io/install/repositories/tyk/tyk-sync/script.deb.sh | sudo bash
+     - run: |
+         sudo apt-get install tyk-sync=2.0.0
+     - run: |
+         /opt/tyk-sync/tyk-sync sync -d="$dashboard_url" -s="$dash_key" -p="."
